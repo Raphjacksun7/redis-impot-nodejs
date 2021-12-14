@@ -1,0 +1,14 @@
+{
+  "name": "redis-import",
+  "version": "1.0.0",
+  "description": "Minimal code to work with redis and xml file ",
+  "main": "index.js",
+  "repository": "https://github.com/Raphjacksun7/redis-impot-nodejs.git",
+  "author": "Raphael AVOCEGAMOU",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^4.0.1",
+    "xml2js": "^0.4.23"
+  }
+}
