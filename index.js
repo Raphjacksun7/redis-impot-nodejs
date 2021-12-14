@@ -1,16 +1,16 @@
-const xml2js = require('xml2js');
-const fs = require('fs');
+import fs from "fs";
+import xml2js from "xml2js";
+import { createClient } from "redis";
+
 const parser = new xml2js.Parser({ attrkey: "ATTR" });
+const redisClient = createClient();
 
-// this example reads the file synchronously
-// you can read it asynchronously also
-let xml_string = fs.readFileSync("config.xml", "utf8");
-
-parser.parseString(xml_string, function(error, result) {
-    if(error === null) {
-        console.log(result);
-    }
-    else {
-        console.log(error);
-    }
+// Read config.xml asynchronously
+const xml_string = fs.readFileSync("config.xml", "utf8");
+parser.parseString(xml_string, function (error, result) {
+  if (error === null) {
+     redisClient.set("config", JSON.stringify(result));
+  } else {
+    console.log(error);
+  }
 });
