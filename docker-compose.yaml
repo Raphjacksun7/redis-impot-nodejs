@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  node:
+    build: ./node
+    command: node index.js
+    image : node-image
+    depends_on:
+      - redis-server
+
+  redis-server:
+    image: "redis:alpine"
+    command: redis-server
+    ports:
+      - "6379:6379"
